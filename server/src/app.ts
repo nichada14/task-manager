@@ -9,9 +9,11 @@ const app = express();
 
 // Set CORS for Next.js frontend
 app.use(cors({
-  origin: 'http://localhost:3000',
+  origin: ['http://localhost:3000', 'https://task-manager-s2qj.onrender.com'],
+  methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
   credentials: true,
 }));
+
 
 app.use(express.json());
 
