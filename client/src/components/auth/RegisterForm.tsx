@@ -1,7 +1,7 @@
 'use client';
 
 import { useState } from 'react';
-import { useRouter } from 'next/navigation';
+// import { useRouter } from 'next/navigation';
 import Link from 'next/link';
 import Input from '../ui/Input';
 import Button from '../ui/Button';
@@ -9,7 +9,7 @@ import Card from '../ui/Card';
 import { register } from '@/lib/api/auth';
 
 export default function RegisterForm() {
-  const router = useRouter();
+  // const router = useRouter();
   const [form, setForm] = useState({ username: '', email: '', password: '' });
   const [error, setError] = useState('');
 

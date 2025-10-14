@@ -1,7 +1,7 @@
 'use client';
 
 import { useState } from 'react';
-import { useRouter } from 'next/navigation';
+// import { useRouter } from 'next/navigation';
 import Link from 'next/link';
 import Input from '../ui/Input';
 import Button from '../ui/Button';
@@ -9,7 +9,7 @@ import Card from '../ui/Card';
 import { login } from '@/lib/api/auth';
 
 export default function LoginForm() {
-  const router = useRouter();
+  // const router = useRouter();
   const [form, setForm] = useState({ email: '', password: '' });
   const [error, setError] = useState('');
 
