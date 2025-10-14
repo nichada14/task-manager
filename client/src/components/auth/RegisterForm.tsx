@@ -7,6 +7,7 @@ import Input from '../ui/Input';
 import Button from '../ui/Button';
 import Card from '../ui/Card';
 import { register } from '@/lib/api/auth';
+import { AxiosError } from 'axios';
 
 export default function RegisterForm() {
   // const router = useRouter();
@@ -24,10 +25,10 @@ export default function RegisterForm() {
     try {
       const res = await register(form);
       localStorage.setItem('token', res.token);
-      // Reload to update auth state (e.g., Navbar)
       window.location.href = '/tasks';
-    } catch (err: any) {
-      setError(err.response?.data?.message || 'Registration failed');
+    } catch (err: unknown) {
+      const error = err as AxiosError<{ message: string }>;
+      setError(error.response?.data?.message || 'Registration failed');
     }
   };
 

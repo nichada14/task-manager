@@ -7,6 +7,7 @@ import Input from '../ui/Input';
 import Button from '../ui/Button';
 import Card from '../ui/Card';
 import { login } from '@/lib/api/auth';
+import { AxiosError } from 'axios';
 
 export default function LoginForm() {
   // const router = useRouter();
@@ -24,10 +25,11 @@ export default function LoginForm() {
     try {
       const res = await login(form);
       localStorage.setItem('token', res.token);
-      // Reload to refresh authenticated state
+      // Redirect to tasks page after successful login
       window.location.href = '/tasks';
-    } catch (err: any) {
-      setError(err.response?.data?.message || 'Login failed');
+    } catch (err: unknown) {
+      const error = err as AxiosError<{ message: string }>;
+      setError(error.response?.data?.message || 'Login failed');
     }
   };
 
@@ -59,7 +61,7 @@ export default function LoginForm() {
 
       {/* Register link */}
       <p className="mt-4 text-sm text-center">
-        Don't have an account?{' '}
+        Don&apos;t have an account?{' '}
         <Link href="/register" className="text-blue-600 hover:underline">
           Register here
         </Link>
