@@ -10,7 +10,7 @@ const app = express();
 // Set CORS for Next.js frontend
 app.use(cors({
   origin: ['http://localhost:3000', 'https://task-manager-system-mh50.onrender.com'], 
-  methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
+  methods: ['GET', 'POST', 'PUT', 'DELETE', 'PATCH', 'OPTIONS'],
   credentials: true,
 }));
 
